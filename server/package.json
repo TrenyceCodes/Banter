@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "the backend for the banter chat application",
+  "main": "./src/server.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "nodemon dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "prestart": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TreNyceCodes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

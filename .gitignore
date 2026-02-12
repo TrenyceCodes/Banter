@@ -1,0 +1,3 @@
+# files to ignore
+./server/.env
+./server/node_modules
