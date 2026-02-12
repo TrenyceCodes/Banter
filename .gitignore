@@ -3,10 +3,18 @@
 # dependencies
 /.pnp
 .pnp.js
-/server/node_modules/
+/server/node_modules
+/server/.env
 
 # testing
 /coverage
+
+/server/generated/prisma
+
+/server/generated/prisma
+
+/server/src/generated/prisma
+
 
 # production
 /build
