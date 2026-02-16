@@ -41,6 +41,8 @@ export declare const UserScalarFieldEnum: {
     readonly username: "username";
     readonly email: "email";
     readonly password: "password";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
 export declare const SortOrder: {

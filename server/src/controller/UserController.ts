@@ -1,16 +1,20 @@
 import {Request, Response} from 'express';
 import { prisma } from "../../lib/prisma";
+import bcrypt from "bcrypt";
 
 // registers user
 const registerUser = async(request: Request, response: Response) => {
     const {username, email, password} = request.body;
 
     try {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
         const user = await prisma.user.create({
             data: {
                 username: username,
                 email: email,
-                password: password
+                password: hashedPassword
             }
         })
 
@@ -19,6 +23,36 @@ const registerUser = async(request: Request, response: Response) => {
         response.status(400).json({"message": "Unsuccessful in creating user", "error": error});
     }
     
+}
+
+//login user
+const loginUser = async(request: Request, response: Response) => {
+    const {email, password} = request.body;
+
+    try {
+        const foundUser = await prisma.user.findFirst({
+            where: {
+                email: email
+            }
+        })
+
+        if (!foundUser) {
+            response.status(404).send("User not found.");
+        }
+
+        const passwordMatch = await bcrypt.compare(password, foundUser!.password);
+        if (!passwordMatch) {
+            response.status(401).json({ message: "Incorrect password." });
+        }
+
+        response.status(200).json({
+            message: "User logged in successfully.",
+            user: foundUser
+        })
+    } catch (error) {
+        console.error("Error logging in user:", error);
+        response.status(500).json({ message: "An error occurred while logging in." });
+    }
 }
 
 //finds user by id
@@ -75,4 +109,4 @@ const deleteUserById = async (request: Request, response: Response) => {
 
 }
 
-export { registerUser, findUserById, allUsers, deleteUserById }
+export { registerUser, loginUser, findUserById, allUsers, deleteUserById }

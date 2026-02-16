@@ -16,9 +16,6 @@ app.use((0, cors_1.default)());
 const PORT = Number(process.env.PORT);
 //routes
 app.use("/user", UserRoutes_1.userRoutes);
-app.get("/", (request, response) => {
-    response.send({ "message": "hello world" });
-});
 app.listen(PORT, async () => {
     console.log(`Server is running on port ${process.env.PORT}. http://localhost:3001/`);
 });

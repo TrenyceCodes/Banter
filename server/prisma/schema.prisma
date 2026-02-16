@@ -19,4 +19,8 @@ model User {
   username  String @unique
   email String @unique
   password String @unique
+  OTP_Code String @unique
+  OTP_Expiry Int 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }

@@ -1,16 +1,22 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUserById = exports.allUsers = exports.findUserById = exports.registerUser = void 0;
+exports.deleteUserById = exports.allUsers = exports.findUserById = exports.loginUser = exports.registerUser = void 0;
 const prisma_1 = require("../../lib/prisma");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 // registers user
 const registerUser = async (request, response) => {
     const { username, email, password } = request.body;
     try {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt_1.default.hash(password, saltRounds);
         const user = await prisma_1.prisma.user.create({
             data: {
                 username: username,
                 email: email,
-                password: password
+                password: hashedPassword
             }
         });
         response.status(200).json({ "message": "User added successfully", "user": user });
@@ -20,6 +26,33 @@ const registerUser = async (request, response) => {
     }
 };
 exports.registerUser = registerUser;
+//login user
+const loginUser = async (request, response) => {
+    const { email, password } = request.body;
+    try {
+        const foundUser = await prisma_1.prisma.user.findFirst({
+            where: {
+                email: email
+            }
+        });
+        if (!foundUser) {
+            response.status(404).send("User not found.");
+        }
+        const passwordMatch = await bcrypt_1.default.compare(password, foundUser.password);
+        if (!passwordMatch) {
+            response.status(401).json({ message: "Incorrect password." });
+        }
+        response.status(200).json({
+            message: "User logged in successfully.",
+            user: foundUser
+        });
+    }
+    catch (error) {
+        console.error("Error logging in user:", error);
+        response.status(500).json({ message: "An error occurred while logging in." });
+    }
+};
+exports.loginUser = loginUser;
 //finds user by id
 const findUserById = async (request, response) => {
     const { id } = await request.params;
@@ -53,6 +86,7 @@ const allUsers = async (request, response) => {
     }
 };
 exports.allUsers = allUsers;
+// delete user by id
 const deleteUserById = async (request, response) => {
     const { id } = await request.params;
     try {
