@@ -6,16 +6,17 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
+  moduleFormat = "cjs"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-model User { 
-  id Int @id @default(autoincrement())
-  username String @unique
+model User {
+  id    Int    @id @default(autoincrement())
+  username  String @unique
   email String @unique
   password String @unique
 }
