@@ -8,6 +8,8 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const UserRoutes_1 = require("./routes/UserRoutes");
+const RoomRoutes_1 = require("./routes/RoomRoutes");
+const MessageRoutes_1 = require("./routes/MessageRoutes");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(body_parser_1.default.json());
@@ -16,6 +18,8 @@ app.use((0, cors_1.default)());
 const PORT = Number(process.env.PORT);
 //routes
 app.use("/user", UserRoutes_1.userRoutes);
+app.use("/room", RoomRoutes_1.roomRoutes);
+app.use("/messages", MessageRoutes_1.messageRoutes);
 app.listen(PORT, async () => {
     console.log(`Server is running on port ${process.env.PORT}. http://localhost:3001/`);
 });

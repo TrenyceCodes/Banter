@@ -27,6 +27,8 @@ export declare const JsonNull: import("@prisma/client-runtime-utils").JsonNullCl
 export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClass;
 export declare const ModelName: {
     readonly User: "User";
+    readonly Room: "Room";
+    readonly RoomMembers: "RoomMembers";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -41,8 +43,24 @@ export declare const UserScalarFieldEnum: {
     readonly username: "username";
     readonly email: "email";
     readonly password: "password";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
 };
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum];
+export declare const RoomScalarFieldEnum: {
+    readonly id: "id";
+    readonly chatRoomCreatorId: "chatRoomCreatorId";
+    readonly chatRoomTitle: "chatRoomTitle";
+    readonly createdAt: "createdAt";
+    readonly updatedAt: "updatedAt";
+};
+export type RoomScalarFieldEnum = (typeof RoomScalarFieldEnum)[keyof typeof RoomScalarFieldEnum];
+export declare const RoomMembersScalarFieldEnum: {
+    readonly id: "id";
+    readonly userId: "userId";
+    readonly roomId: "roomId";
+};
+export type RoomMembersScalarFieldEnum = (typeof RoomMembersScalarFieldEnum)[keyof typeof RoomMembersScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

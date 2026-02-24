@@ -7,4 +7,14 @@ export * from './enums';
  *
  */
 export type User = Prisma.UserModel;
+/**
+ * Model Room
+ *
+ */
+export type Room = Prisma.RoomModel;
+/**
+ * Model RoomMembers
+ *
+ */
+export type RoomMembers = Prisma.RoomMembersModel;
 //# sourceMappingURL=browser.d.ts.map

@@ -98,7 +98,7 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
      * ])
      * ```
      *
-     * Read more in our [docs](https://www.prisma.io/docs/concepts/components/prisma-client/transactions).
+     * Read more in our [docs](https://www.prisma.io/docs/orm/prisma-client/queries/transactions).
      */
     $transaction<P extends Prisma.PrismaPromise<any>[]>(arg: [...P], options?: {
         isolationLevel?: Prisma.TransactionIsolationLevel;
@@ -120,6 +120,28 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
   * ```
   */
     get user(): Prisma.UserDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.room`: Exposes CRUD operations for the **Room** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Rooms
+      * const rooms = await prisma.room.findMany()
+      * ```
+      */
+    get room(): Prisma.RoomDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    /**
+     * `prisma.roomMembers`: Exposes CRUD operations for the **RoomMembers** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more RoomMembers
+      * const roomMembers = await prisma.roomMembers.findMany()
+      * ```
+      */
+    get roomMembers(): Prisma.RoomMembersDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
 }

@@ -3,6 +3,12 @@ import { prisma } from "../../lib/prisma";
 import bcrypt from "bcrypt";
 
 // registers user
+/**
+ * Returns if we successfully created user or failed to do so
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns the json response status determining if we succeeded or failed to create the user. 
+ */
 const registerUser = async(request: Request, response: Response) => {
     const {username, email, password} = request.body;
 
@@ -25,7 +31,14 @@ const registerUser = async(request: Request, response: Response) => {
     
 }
 
+
 //login user
+/**
+ * Returns if we successfully logged user in or failed to do so
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns the json response status determining if we succeeded or failed to login the user. 
+ */
 const loginUser = async(request: Request, response: Response) => {
     const {email, password} = request.body;
 
@@ -56,6 +69,12 @@ const loginUser = async(request: Request, response: Response) => {
 }
 
 //finds user by id
+/**
+ * Returns if we successfully found users id
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns the json response status determining if we succeeded or failed to find user by id. 
+ */
 const findUserById = async (request: Request, response: Response) => {
     const {id} = await request.params;
 
@@ -78,6 +97,12 @@ const findUserById = async (request: Request, response: Response) => {
 }
 
 // gets all users
+/**
+ * Returns if we successfully got all users from the database
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns the json response status determining if we succeeded or failed to find all users. 
+ */
 const allUsers = async (request: Request, response: Response) => {
     try {
         const listOfUsers = await prisma.user.findMany();
@@ -93,6 +118,12 @@ const allUsers = async (request: Request, response: Response) => {
 }
 
 // delete user by id
+/**
+ * Returns if we successfully deleted user by id
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns the json response status determining if we succeeded or failed to delete user by id. 
+ */
 const deleteUserById = async (request: Request, response: Response) => {
     const {id} = await request.params;
 

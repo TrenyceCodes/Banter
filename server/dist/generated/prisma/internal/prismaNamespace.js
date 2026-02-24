@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.QueryMode = exports.SortOrder = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.QueryMode = exports.SortOrder = exports.RoomMembersScalarFieldEnum = exports.RoomScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 /**
  * Prisma Errors
@@ -72,12 +72,12 @@ exports.Sql = runtime.Sql;
 exports.Decimal = runtime.Decimal;
 exports.getExtensionContext = runtime.Extensions.getExtensionContext;
 /**
- * Prisma Client JS version: 7.4.0
- * Query Engine version: ab56fe763f921d033a6c195e7ddeb3e255bdbb57
+ * Prisma Client JS version: 7.4.1
+ * Query Engine version: 55ae170b1ced7fc6ed07a15f110549408c501bb3
  */
 exports.prismaVersion = {
-    client: "7.4.0",
-    engine: "ab56fe763f921d033a6c195e7ddeb3e255bdbb57"
+    client: "7.4.1",
+    engine: "55ae170b1ced7fc6ed07a15f110549408c501bb3"
 };
 exports.NullTypes = {
     DbNull: runtime.NullTypes.DbNull,
@@ -103,7 +103,9 @@ exports.JsonNull = runtime.JsonNull;
  */
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
-    User: 'User'
+    User: 'User',
+    Room: 'Room',
+    RoomMembers: 'RoomMembers'
 };
 /**
  * Enums
@@ -118,7 +120,21 @@ exports.UserScalarFieldEnum = {
     id: 'id',
     username: 'username',
     email: 'email',
-    password: 'password'
+    password: 'password',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.RoomScalarFieldEnum = {
+    id: 'id',
+    chatRoomCreatorId: 'chatRoomCreatorId',
+    chatRoomTitle: 'chatRoomTitle',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.RoomMembersScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    roomId: 'roomId'
 };
 exports.SortOrder = {
     asc: 'asc',

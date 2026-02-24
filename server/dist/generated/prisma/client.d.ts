@@ -24,4 +24,14 @@ export { Prisma };
  *
  */
 export type User = Prisma.UserModel;
+/**
+ * Model Room
+ *
+ */
+export type Room = Prisma.RoomModel;
+/**
+ * Model RoomMembers
+ *
+ */
+export type RoomMembers = Prisma.RoomMembersModel;
 //# sourceMappingURL=client.d.ts.map
