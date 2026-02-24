@@ -7,5 +7,6 @@ exports.roomRoutes = (0, express_1.Router)();
 exports.roomRoutes.post("/", RoomController_1.createRoom);
 exports.roomRoutes.get("/:roomId", RoomController_1.getRoomById);
 exports.roomRoutes.get("/", RoomController_1.getRooms);
+exports.roomRoutes.put("/:roomId", RoomController_1.updateRoomName);
 exports.roomRoutes.delete("/:roomId", RoomController_1.deleteRoomById);
 //# sourceMappingURL=RoomRoutes.js.map

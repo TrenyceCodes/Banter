@@ -24,9 +24,9 @@ const registerUser = async(request: Request, response: Response) => {
             }
         })
 
-        response.status(200).json({"message": "User added successfully", "user": user});
+        return response.status(200).json({"message": "User added successfully", "user": user});
     } catch (error) {
-        response.status(400).json({"message": "Unsuccessful in creating user", "error": error});
+        return response.status(400).json({"message": "Unsuccessful in creating user", "error": error});
     }
     
 }
@@ -50,21 +50,21 @@ const loginUser = async(request: Request, response: Response) => {
         })
 
         if (!foundUser) {
-            response.status(404).send("User not found.");
+            return response.status(404).send("User not found.");
         }
 
         const passwordMatch = await bcrypt.compare(password, foundUser!.password);
         if (!passwordMatch) {
-            response.status(401).json({ message: "Incorrect password." });
+            return response.status(401).json({ message: "Incorrect password." });
         }
 
-        response.status(200).json({
+        return response.status(200).json({
             message: "User logged in successfully.",
             user: foundUser
         })
     } catch (error) {
         console.error("Error logging in user:", error);
-        response.status(500).json({ message: "An error occurred while logging in." });
+        return response.status(500).json({ message: "An error occurred while logging in." });
     }
 }
 
@@ -86,12 +86,12 @@ const findUserById = async (request: Request, response: Response) => {
         })
 
         if (foundUser != null) {
-           response.status(200).json({"message": "found user", "username": foundUser});
+           return response.status(200).json({"message": "found user", "username": foundUser});
         }
 
-        response.status(200).json({"message": "User not found"});
+        return response.status(200).json({"message": "User not found"});
     } catch (error) {
-       response.status(400).json({"message": "Unsuccessful in finding user", "error": error}); 
+       return response.status(400).json({"message": "Unsuccessful in finding user", "error": error}); 
     }
 
 }
@@ -111,9 +111,9 @@ const allUsers = async (request: Request, response: Response) => {
             response.status(200).json({"message": "list of users", "users": listOfUsers}); 
         }
        
-        response.status(200).json({"message": "no users found"});
+        return response.status(200).json({"message": "no users found"});
     } catch (error) {
-       response.status(400).json({"message": "No users found", "error": error}); 
+       return response.status(400).json({"message": "No users found", "error": error}); 
     }
 }
 
@@ -133,9 +133,9 @@ const deleteUserById = async (request: Request, response: Response) => {
                 id: Number(id)
             }
         })
-        deletedUser ? response.status(200).json({"message": "Found id", "id": id, "user": deletedUser}) : null;
+        return deletedUser ? response.status(200).json({"message": "Found id", "id": id, "user": deletedUser}) : null;
     } catch (error) {
-       response.status(400).json({"message": "No users found to delete", "error": error});  
+       return response.status(400).json({"message": "No users found to delete", "error": error});  
     }
 
 }

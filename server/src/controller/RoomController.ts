@@ -94,6 +94,37 @@ const getRoomById = async (request: Request, response: Response) => {
     }
 }
 
+// update room name
+/**
+ * Allows us to update room name by it's id
+ * @param request  - the request from express.js that handles incoming messages 
+ * @param response - the response from express.js that handles outputting our api's incoming responses. 
+ * @returns Returns if we successfully updated room name by id
+ */
+const updateRoomName = async (request: Request, response: Response) => {
+    const {roomId} = await request.params;
+    const {chatRoomTitle} = await request.body;
+    const roomIdNumber = Number(roomId);
+
+    if (isNaN(roomIdNumber)) {
+        return response.status(400).json({"message": "Invalid room id"})
+    }
+    
+
+    try {
+        const roomName = await prisma.room.update({
+            where: {id: roomIdNumber},
+            data: {
+                chatRoomTitle: chatRoomTitle
+            }
+        })
+
+        return response.status(200).json({"message": `room ${roomIdNumber} has been successfully updated`, "room": roomName});
+    } catch (error) {
+        return response.status(400).json({"message": `room ${roomIdNumber} has an error in updating`, "error": error});
+    }
+}
+
 
 //delete room by id
 /**
@@ -132,5 +163,5 @@ const deleteRoomById = async (request: Request, response: Response) => {
 }
 
 export {
-    createRoom, getRooms, getRoomById, deleteRoomById
+    createRoom, getRooms, getRoomById, deleteRoomById, updateRoomName
 }
