@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.QueryMode = exports.SortOrder = exports.RoomMembersScalarFieldEnum = exports.RoomScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.QueryMode = exports.SortOrder = exports.MessagesScalarFieldEnum = exports.RoomMembersScalarFieldEnum = exports.RoomScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -77,7 +77,8 @@ exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
     User: 'User',
     Room: 'Room',
-    RoomMembers: 'RoomMembers'
+    RoomMembers: 'RoomMembers',
+    Messages: 'Messages'
 };
 /*
  * Enums
@@ -107,6 +108,13 @@ exports.RoomMembersScalarFieldEnum = {
     id: 'id',
     userId: 'userId',
     roomId: 'roomId'
+};
+exports.MessagesScalarFieldEnum = {
+    id: 'id',
+    message: 'message',
+    username: 'username',
+    roomId: 'roomId',
+    sender: 'sender'
 };
 exports.SortOrder = {
     asc: 'asc',

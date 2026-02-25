@@ -50,9 +50,10 @@ const getRooms = async (request: Request, response: Response) => {
     try {
         const listOfRooms = await prisma.room.findMany();
         const listOfRoomMembers = await prisma.roomMembers.findMany();
+        const listOfMessages = await prisma.messages.findMany();
 
         if (listOfRooms.length > 0) {
-            return response.status(200).json({"message": "list of rooms", "rooms": listOfRooms, "roomMembers": listOfRoomMembers}); 
+            return response.status(200).json({"message": "list of rooms", "rooms": listOfRooms, "roomMembers": listOfRoomMembers, "messages": listOfMessages}); 
         }
        
         return response.status(200).json({"message": "no rooms found"});
@@ -84,8 +85,14 @@ const getRoomById = async (request: Request, response: Response) => {
             }
         })
 
+        const currentMessage = await prisma.messages.findMany({
+            where: {
+                roomId: Number(roomId)
+            }
+        })
+
         if (currentRoom != null) {
-           return response.status(200).json({"message": "found room", "current room": currentRoom, "current room users": currentRoomMembers});
+           return response.status(200).json({"message": "found room", "current room": currentRoom, "current room users": currentRoomMembers, "messages": currentMessage});
         }
 
         return response.status(200).json({"message": "room not found"});
@@ -143,6 +150,12 @@ const deleteRoomById = async (request: Request, response: Response) => {
 
     try {
         const [deletedRoomMembers, deletedRoom] = await prisma.$transaction([
+            prisma.messages.deleteMany({
+                where: {
+                    roomId: roomIdNumber
+                }
+            }),
+            
             prisma.roomMembers.deleteMany({
                 where: {
                     roomId: roomIdNumber 

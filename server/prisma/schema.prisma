@@ -18,6 +18,7 @@ model User {
   updatedAt  DateTime   @default(now()) @updatedAt
   rooms Room[]
   roomMembers RoomMembers[]
+  messages Messages[]
 }
 
 model Room {
@@ -28,6 +29,8 @@ model Room {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @default(now()) @updatedAt 
   roomMembers RoomMembers[]
+
+  messages Messages[]
 }
 
 model RoomMembers {
@@ -36,4 +39,14 @@ model RoomMembers {
   roomId Int
   Room Room @relation(fields: [roomId], references: [id])
   User User @relation(fields: [userId], references: [id])
+}
+
+model Messages {
+  id Int @id @default(autoincrement())
+  message String
+  username String
+  roomId Int
+  sender Int
+  Room Room @relation(fields: [roomId], references: [id])
+  User User @relation(fields: [sender], references: [id])
 }

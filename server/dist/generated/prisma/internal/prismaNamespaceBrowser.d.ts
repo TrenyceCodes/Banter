@@ -29,6 +29,7 @@ export declare const ModelName: {
     readonly User: "User";
     readonly Room: "Room";
     readonly RoomMembers: "RoomMembers";
+    readonly Messages: "Messages";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -61,6 +62,14 @@ export declare const RoomMembersScalarFieldEnum: {
     readonly roomId: "roomId";
 };
 export type RoomMembersScalarFieldEnum = (typeof RoomMembersScalarFieldEnum)[keyof typeof RoomMembersScalarFieldEnum];
+export declare const MessagesScalarFieldEnum: {
+    readonly id: "id";
+    readonly message: "message";
+    readonly username: "username";
+    readonly roomId: "roomId";
+    readonly sender: "sender";
+};
+export type MessagesScalarFieldEnum = (typeof MessagesScalarFieldEnum)[keyof typeof MessagesScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

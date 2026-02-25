@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.QueryMode = exports.SortOrder = exports.RoomMembersScalarFieldEnum = exports.RoomScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.QueryMode = exports.SortOrder = exports.MessagesScalarFieldEnum = exports.RoomMembersScalarFieldEnum = exports.RoomScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 /**
  * Prisma Errors
@@ -105,7 +105,8 @@ exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
     User: 'User',
     Room: 'Room',
-    RoomMembers: 'RoomMembers'
+    RoomMembers: 'RoomMembers',
+    Messages: 'Messages'
 };
 /**
  * Enums
@@ -135,6 +136,13 @@ exports.RoomMembersScalarFieldEnum = {
     id: 'id',
     userId: 'userId',
     roomId: 'roomId'
+};
+exports.MessagesScalarFieldEnum = {
+    id: 'id',
+    message: 'message',
+    username: 'username',
+    roomId: 'roomId',
+    sender: 'sender'
 };
 exports.SortOrder = {
     asc: 'asc',

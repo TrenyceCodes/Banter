@@ -17,4 +17,9 @@ export type Room = Prisma.RoomModel;
  *
  */
 export type RoomMembers = Prisma.RoomMembersModel;
+/**
+ * Model Messages
+ *
+ */
+export type Messages = Prisma.MessagesModel;
 //# sourceMappingURL=browser.d.ts.map

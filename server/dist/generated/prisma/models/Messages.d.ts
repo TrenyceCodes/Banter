@@ -14,78 +14,66 @@ export type AggregateMessages = {
 };
 export type MessagesAvgAggregateOutputType = {
     id: number | null;
-    chatroomId: number | null;
-    userId: number | null;
+    roomId: number | null;
+    sender: number | null;
 };
 export type MessagesSumAggregateOutputType = {
     id: number | null;
-    chatroomId: number | null;
-    userId: number | null;
+    roomId: number | null;
+    sender: number | null;
 };
 export type MessagesMinAggregateOutputType = {
     id: number | null;
     message: string | null;
     username: string | null;
-    chatroomId: number | null;
-    userId: number | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
+    roomId: number | null;
+    sender: number | null;
 };
 export type MessagesMaxAggregateOutputType = {
     id: number | null;
     message: string | null;
     username: string | null;
-    chatroomId: number | null;
-    userId: number | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
+    roomId: number | null;
+    sender: number | null;
 };
 export type MessagesCountAggregateOutputType = {
     id: number;
     message: number;
     username: number;
-    chatroomId: number;
-    userId: number;
-    createdAt: number;
-    updatedAt: number;
+    roomId: number;
+    sender: number;
     _all: number;
 };
 export type MessagesAvgAggregateInputType = {
     id?: true;
-    chatroomId?: true;
-    userId?: true;
+    roomId?: true;
+    sender?: true;
 };
 export type MessagesSumAggregateInputType = {
     id?: true;
-    chatroomId?: true;
-    userId?: true;
+    roomId?: true;
+    sender?: true;
 };
 export type MessagesMinAggregateInputType = {
     id?: true;
     message?: true;
     username?: true;
-    chatroomId?: true;
-    userId?: true;
-    createdAt?: true;
-    updatedAt?: true;
+    roomId?: true;
+    sender?: true;
 };
 export type MessagesMaxAggregateInputType = {
     id?: true;
     message?: true;
     username?: true;
-    chatroomId?: true;
-    userId?: true;
-    createdAt?: true;
-    updatedAt?: true;
+    roomId?: true;
+    sender?: true;
 };
 export type MessagesCountAggregateInputType = {
     id?: true;
     message?: true;
     username?: true;
-    chatroomId?: true;
-    userId?: true;
-    createdAt?: true;
-    updatedAt?: true;
+    roomId?: true;
+    sender?: true;
     _all?: true;
 };
 export type MessagesAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -168,10 +156,8 @@ export type MessagesGroupByOutputType = {
     id: number;
     message: string;
     username: string;
-    chatroomId: number;
-    userId: number;
-    createdAt: Date;
-    updatedAt: Date;
+    roomId: number;
+    sender: number;
     _count: MessagesCountAggregateOutputType | null;
     _avg: MessagesAvgAggregateOutputType | null;
     _sum: MessagesSumAggregateOutputType | null;
@@ -188,10 +174,8 @@ export type MessagesWhereInput = {
     id?: Prisma.IntFilter<"Messages"> | number;
     message?: Prisma.StringFilter<"Messages"> | string;
     username?: Prisma.StringFilter<"Messages"> | string;
-    chatroomId?: Prisma.IntFilter<"Messages"> | number;
-    userId?: Prisma.IntFilter<"Messages"> | number;
-    createdAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
-    updatedAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
+    roomId?: Prisma.IntFilter<"Messages"> | number;
+    sender?: Prisma.IntFilter<"Messages"> | number;
     Room?: Prisma.XOR<Prisma.RoomScalarRelationFilter, Prisma.RoomWhereInput>;
     User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 };
@@ -199,10 +183,8 @@ export type MessagesOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     message?: Prisma.SortOrder;
     username?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
-    createdAt?: Prisma.SortOrder;
-    updatedAt?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
     Room?: Prisma.RoomOrderByWithRelationInput;
     User?: Prisma.UserOrderByWithRelationInput;
 };
@@ -213,10 +195,8 @@ export type MessagesWhereUniqueInput = Prisma.AtLeast<{
     NOT?: Prisma.MessagesWhereInput | Prisma.MessagesWhereInput[];
     message?: Prisma.StringFilter<"Messages"> | string;
     username?: Prisma.StringFilter<"Messages"> | string;
-    chatroomId?: Prisma.IntFilter<"Messages"> | number;
-    userId?: Prisma.IntFilter<"Messages"> | number;
-    createdAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
-    updatedAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
+    roomId?: Prisma.IntFilter<"Messages"> | number;
+    sender?: Prisma.IntFilter<"Messages"> | number;
     Room?: Prisma.XOR<Prisma.RoomScalarRelationFilter, Prisma.RoomWhereInput>;
     User?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
 }, "id">;
@@ -224,10 +204,8 @@ export type MessagesOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
     message?: Prisma.SortOrder;
     username?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
-    createdAt?: Prisma.SortOrder;
-    updatedAt?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
     _count?: Prisma.MessagesCountOrderByAggregateInput;
     _avg?: Prisma.MessagesAvgOrderByAggregateInput;
     _max?: Prisma.MessagesMaxOrderByAggregateInput;
@@ -241,16 +219,12 @@ export type MessagesScalarWhereWithAggregatesInput = {
     id?: Prisma.IntWithAggregatesFilter<"Messages"> | number;
     message?: Prisma.StringWithAggregatesFilter<"Messages"> | string;
     username?: Prisma.StringWithAggregatesFilter<"Messages"> | string;
-    chatroomId?: Prisma.IntWithAggregatesFilter<"Messages"> | number;
-    userId?: Prisma.IntWithAggregatesFilter<"Messages"> | number;
-    createdAt?: Prisma.DateTimeWithAggregatesFilter<"Messages"> | Date | string;
-    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Messages"> | Date | string;
+    roomId?: Prisma.IntWithAggregatesFilter<"Messages"> | number;
+    sender?: Prisma.IntWithAggregatesFilter<"Messages"> | number;
 };
 export type MessagesCreateInput = {
     message: string;
     username: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
     Room: Prisma.RoomCreateNestedOneWithoutMessagesInput;
     User: Prisma.UserCreateNestedOneWithoutMessagesInput;
 };
@@ -258,16 +232,12 @@ export type MessagesUncheckedCreateInput = {
     id?: number;
     message: string;
     username: string;
-    chatroomId: number;
-    userId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    roomId: number;
+    sender: number;
 };
 export type MessagesUpdateInput = {
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     Room?: Prisma.RoomUpdateOneRequiredWithoutMessagesNestedInput;
     User?: Prisma.UserUpdateOneRequiredWithoutMessagesNestedInput;
 };
@@ -275,34 +245,26 @@ export type MessagesUncheckedUpdateInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    chatroomId?: Prisma.IntFieldUpdateOperationsInput | number;
-    userId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    roomId?: Prisma.IntFieldUpdateOperationsInput | number;
+    sender?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesCreateManyInput = {
     id?: number;
     message: string;
     username: string;
-    chatroomId: number;
-    userId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    roomId: number;
+    sender: number;
 };
 export type MessagesUpdateManyMutationInput = {
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type MessagesUncheckedUpdateManyInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    chatroomId?: Prisma.IntFieldUpdateOperationsInput | number;
-    userId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    roomId?: Prisma.IntFieldUpdateOperationsInput | number;
+    sender?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesListRelationFilter = {
     every?: Prisma.MessagesWhereInput;
@@ -316,38 +278,32 @@ export type MessagesCountOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     message?: Prisma.SortOrder;
     username?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
-    createdAt?: Prisma.SortOrder;
-    updatedAt?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
 };
 export type MessagesAvgOrderByAggregateInput = {
     id?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
 };
 export type MessagesMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     message?: Prisma.SortOrder;
     username?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
-    createdAt?: Prisma.SortOrder;
-    updatedAt?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
 };
 export type MessagesMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     message?: Prisma.SortOrder;
     username?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
-    createdAt?: Prisma.SortOrder;
-    updatedAt?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
 };
 export type MessagesSumOrderByAggregateInput = {
     id?: Prisma.SortOrder;
-    chatroomId?: Prisma.SortOrder;
-    userId?: Prisma.SortOrder;
+    roomId?: Prisma.SortOrder;
+    sender?: Prisma.SortOrder;
 };
 export type MessagesCreateNestedManyWithoutUserInput = {
     create?: Prisma.XOR<Prisma.MessagesCreateWithoutUserInput, Prisma.MessagesUncheckedCreateWithoutUserInput> | Prisma.MessagesCreateWithoutUserInput[] | Prisma.MessagesUncheckedCreateWithoutUserInput[];
@@ -428,17 +384,13 @@ export type MessagesUncheckedUpdateManyWithoutRoomNestedInput = {
 export type MessagesCreateWithoutUserInput = {
     message: string;
     username: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
     Room: Prisma.RoomCreateNestedOneWithoutMessagesInput;
 };
 export type MessagesUncheckedCreateWithoutUserInput = {
     id?: number;
     message: string;
     username: string;
-    chatroomId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    roomId: number;
 };
 export type MessagesCreateOrConnectWithoutUserInput = {
     where: Prisma.MessagesWhereUniqueInput;
@@ -468,25 +420,19 @@ export type MessagesScalarWhereInput = {
     id?: Prisma.IntFilter<"Messages"> | number;
     message?: Prisma.StringFilter<"Messages"> | string;
     username?: Prisma.StringFilter<"Messages"> | string;
-    chatroomId?: Prisma.IntFilter<"Messages"> | number;
-    userId?: Prisma.IntFilter<"Messages"> | number;
-    createdAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
-    updatedAt?: Prisma.DateTimeFilter<"Messages"> | Date | string;
+    roomId?: Prisma.IntFilter<"Messages"> | number;
+    sender?: Prisma.IntFilter<"Messages"> | number;
 };
 export type MessagesCreateWithoutRoomInput = {
     message: string;
     username: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
     User: Prisma.UserCreateNestedOneWithoutMessagesInput;
 };
 export type MessagesUncheckedCreateWithoutRoomInput = {
     id?: number;
     message: string;
     username: string;
-    userId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    sender: number;
 };
 export type MessagesCreateOrConnectWithoutRoomInput = {
     where: Prisma.MessagesWhereUniqueInput;
@@ -513,72 +459,54 @@ export type MessagesCreateManyUserInput = {
     id?: number;
     message: string;
     username: string;
-    chatroomId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    roomId: number;
 };
 export type MessagesUpdateWithoutUserInput = {
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     Room?: Prisma.RoomUpdateOneRequiredWithoutMessagesNestedInput;
 };
 export type MessagesUncheckedUpdateWithoutUserInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    chatroomId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    roomId?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesUncheckedUpdateManyWithoutUserInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    chatroomId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    roomId?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesCreateManyRoomInput = {
     id?: number;
     message: string;
     username: string;
-    userId: number;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
+    sender: number;
 };
 export type MessagesUpdateWithoutRoomInput = {
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     User?: Prisma.UserUpdateOneRequiredWithoutMessagesNestedInput;
 };
 export type MessagesUncheckedUpdateWithoutRoomInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    userId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    sender?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesUncheckedUpdateManyWithoutRoomInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     message?: Prisma.StringFieldUpdateOperationsInput | string;
     username?: Prisma.StringFieldUpdateOperationsInput | string;
-    userId?: Prisma.IntFieldUpdateOperationsInput | number;
-    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    sender?: Prisma.IntFieldUpdateOperationsInput | number;
 };
 export type MessagesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     message?: boolean;
     username?: boolean;
-    chatroomId?: boolean;
-    userId?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
+    roomId?: boolean;
+    sender?: boolean;
     Room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>;
     User?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["messages"]>;
@@ -586,10 +514,8 @@ export type MessagesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
     id?: boolean;
     message?: boolean;
     username?: boolean;
-    chatroomId?: boolean;
-    userId?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
+    roomId?: boolean;
+    sender?: boolean;
     Room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>;
     User?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["messages"]>;
@@ -597,10 +523,8 @@ export type MessagesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
     id?: boolean;
     message?: boolean;
     username?: boolean;
-    chatroomId?: boolean;
-    userId?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
+    roomId?: boolean;
+    sender?: boolean;
     Room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>;
     User?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["messages"]>;
@@ -608,12 +532,10 @@ export type MessagesSelectScalar = {
     id?: boolean;
     message?: boolean;
     username?: boolean;
-    chatroomId?: boolean;
-    userId?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
+    roomId?: boolean;
+    sender?: boolean;
 };
-export type MessagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "message" | "username" | "chatroomId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["messages"]>;
+export type MessagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "message" | "username" | "roomId" | "sender", ExtArgs["result"]["messages"]>;
 export type MessagesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     Room?: boolean | Prisma.RoomDefaultArgs<ExtArgs>;
     User?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
@@ -636,10 +558,8 @@ export type $MessagesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
         id: number;
         message: string;
         username: string;
-        chatroomId: number;
-        userId: number;
-        createdAt: Date;
-        updatedAt: Date;
+        roomId: number;
+        sender: number;
     }, ExtArgs["result"]["messages"]>;
     composites: {};
 };
@@ -999,10 +919,8 @@ export interface MessagesFieldRefs {
     readonly id: Prisma.FieldRef<"Messages", 'Int'>;
     readonly message: Prisma.FieldRef<"Messages", 'String'>;
     readonly username: Prisma.FieldRef<"Messages", 'String'>;
-    readonly chatroomId: Prisma.FieldRef<"Messages", 'Int'>;
-    readonly userId: Prisma.FieldRef<"Messages", 'Int'>;
-    readonly createdAt: Prisma.FieldRef<"Messages", 'DateTime'>;
-    readonly updatedAt: Prisma.FieldRef<"Messages", 'DateTime'>;
+    readonly roomId: Prisma.FieldRef<"Messages", 'Int'>;
+    readonly sender: Prisma.FieldRef<"Messages", 'Int'>;
 }
 /**
  * Messages findUnique

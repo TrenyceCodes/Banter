@@ -144,6 +144,17 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     get roomMembers(): Prisma.RoomMembersDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
+    /**
+     * `prisma.messages`: Exposes CRUD operations for the **Messages** model.
+      * Example usage:
+      * ```ts
+      * // Fetch zero or more Messages
+      * const messages = await prisma.messages.findMany()
+      * ```
+      */
+    get messages(): Prisma.MessagesDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
 }
 export declare function getPrismaClientClass(): PrismaClientConstructor;
 //# sourceMappingURL=class.d.ts.map

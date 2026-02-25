@@ -234,6 +234,7 @@ export declare const ModelName: {
     readonly User: "User";
     readonly Room: "Room";
     readonly RoomMembers: "RoomMembers";
+    readonly Messages: "Messages";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -246,7 +247,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "user" | "room" | "roomMembers";
+        modelProps: "user" | "room" | "roomMembers" | "messages";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -472,6 +473,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        Messages: {
+            payload: Prisma.$MessagesPayload<ExtArgs>;
+            fields: Prisma.MessagesFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.MessagesFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.MessagesFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                findFirst: {
+                    args: Prisma.MessagesFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.MessagesFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                findMany: {
+                    args: Prisma.MessagesFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>[];
+                };
+                create: {
+                    args: Prisma.MessagesCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                createMany: {
+                    args: Prisma.MessagesCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.MessagesCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>[];
+                };
+                delete: {
+                    args: Prisma.MessagesDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                update: {
+                    args: Prisma.MessagesUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.MessagesDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.MessagesUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.MessagesUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>[];
+                };
+                upsert: {
+                    args: Prisma.MessagesUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$MessagesPayload>;
+                };
+                aggregate: {
+                    args: Prisma.MessagesAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateMessages>;
+                };
+                groupBy: {
+                    args: Prisma.MessagesGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MessagesGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.MessagesCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.MessagesCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -529,6 +604,14 @@ export declare const RoomMembersScalarFieldEnum: {
     readonly roomId: "roomId";
 };
 export type RoomMembersScalarFieldEnum = (typeof RoomMembersScalarFieldEnum)[keyof typeof RoomMembersScalarFieldEnum];
+export declare const MessagesScalarFieldEnum: {
+    readonly id: "id";
+    readonly message: "message";
+    readonly username: "username";
+    readonly roomId: "roomId";
+    readonly sender: "sender";
+};
+export type MessagesScalarFieldEnum = (typeof MessagesScalarFieldEnum)[keyof typeof MessagesScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -671,6 +754,7 @@ export type GlobalOmitConfig = {
     user?: Prisma.UserOmit;
     room?: Prisma.RoomOmit;
     roomMembers?: Prisma.RoomMembersOmit;
+    messages?: Prisma.MessagesOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {
