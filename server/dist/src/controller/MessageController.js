@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createMessage = void 0;
+exports.deleteMessage = exports.createMessage = void 0;
 const prisma_1 = require("../../lib/prisma");
 //createMessage
 /**
@@ -35,4 +35,26 @@ const createMessage = async (request, response) => {
     }
 };
 exports.createMessage = createMessage;
+//deleteMessage
+/**
+ * Deletes message by it's id
+ * @param request - the request from express.js that handles incoming messages
+ * @param response - the response from express.js that handles outputting our api's incoming responses.
+ * @returns deleted message and it's id
+ */
+const deleteMessage = async (request, response) => {
+    const { id } = await request.params;
+    try {
+        const deletedMessage = await prisma_1.prisma.messages.delete({
+            where: {
+                id: Number(id)
+            }
+        });
+        return response.status(200).json({ "message": "Found id", "id": id, "deleted_message": deletedMessage });
+    }
+    catch (error) {
+        return response.status(400).json({ "message": "No messages found to delete", "error": error });
+    }
+};
+exports.deleteMessage = deleteMessage;
 //# sourceMappingURL=MessageController.js.map
